@@ -10,6 +10,7 @@ import Downloads from './pages/Downloads'
 import Contact from './pages/Contact'
 import { AnimatePresence, motion } from 'framer-motion'
 import Preloader from './components/Preloader'
+import Corporate_insurace from './pages/Corporate_Insurance'
 
 export default function App(){
   const location = useLocation()
@@ -41,6 +42,7 @@ export default function App(){
                 <Route path="/about" element={<PageWrapper><About/></PageWrapper>} />
                 <Route path="/services" element={<PageWrapper><Services/></PageWrapper>} />
                 <Route path="/products" element={<PageWrapper><Products/></PageWrapper>} />
+                <Route path='/products/corporate-insurance-covers' element={<Corporate_insurace/>}/>
                 <Route path="/downloads" element={<PageWrapper><Downloads/></PageWrapper>} />
                 <Route path="/contact" element={<PageWrapper><Contact/></PageWrapper>} />
               </Routes>

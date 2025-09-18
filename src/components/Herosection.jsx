@@ -5,14 +5,13 @@ import { motion } from 'framer-motion'
 
 const HeroSection = ({heroImg, title,text, page})=>{
     
-const bgStyle = heroImg 
-    ? { backgroundImage: `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.25)), url(${heroImg})` } 
-    : { backgroundImage: 'linear-gradient(90deg,#0052A5,#00AEEF)' }
+const bgStyle = { backgroundImage: `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.25)), url(${heroImg})` } 
+    
     return(
     <section className="relative h-[88vh] bg-cover bg-center" style={bgStyle}>
             <div className="absolute inset-0 bg-black/20"></div>
             <div className="container relative z-20 h-full flex items-center">
-            <motion.div initial={{opacity:0, y:30}} animate={{opacity:1, y:0}} transition={{duration:1.5}} className="max-w-3xl text-white">
+            <motion.div initial={{opacity:0, y:30}} animate={{opacity:1, y:0}} transition={{duration:0.9}} className="max-w-3xl text-white">
                 <h1 className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow">
                 {title}
                 </h1>

@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion'
 import HeroSection from '../components/Herosection'
-import about_us from '../assets/about_us.jpg';
+import about_us from '../assets/about_us-min.jpg';
 export default function About(){
   return (
     <div>
 
     <HeroSection heroImg={about_us} title={'About US'} text={'We educate clients on best practices for managing risks, evaluate unique needs, offer expert advice, and help navigate a variety of insurance options that promote sustainability.'} page={'about'}/>
+
     <div className="w-full py-16 flex flex-col gap-10">
       <div className="flex flex-col md:flex-row gap-5 items-center justify-around">
-        <motion.div initial={{opacity:0, x:-20}} whileInView={{opacity:1, x:0}} transition={{duration:0.7}} className="flex-1">
+        <motion.div initial={{opacity:0, x:-40}} whileInView={{opacity:1, x:0}} transition={{duration:0.7}} className="flex-1">
           <h2 className="w-fit text-3xl font-bold text-logoNavy px-6 py-3 rounded-lg font-semibold shadow-lg"
                     style={{ background: 'linear-gradient(90deg,#FF7A00,#FFD500)' }}>About Sigma Insurance</h2>
           <p className="mt-4 text-gray-600">

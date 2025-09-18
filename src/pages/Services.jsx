@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { FaClipboardList, FaHandHoldingUsd, FaRegStar } from 'react-icons/fa'
+import our_services from '../assets/our_services.jpg';
+import HeroSection from '../components/Herosection';
 
 const services = [
   {title: 'Risk Assessment', desc: 'We evaluate your specific risks and recommend suitable coverage tailored to your situation.', icon: <FaClipboardList />},
@@ -9,9 +11,11 @@ const services = [
 
 export default function Services(){
   return (
-    <div className="container py-16 flex flex-col gap-10">
-      <h2 className="text-3xl font-bold text-logoNavy">Our Services</h2>
-      <div className="flex flex-col md:flex-row gap-6">
+    <div>
+      <HeroSection heroImg={our_services} title={'Our Services'} text={''} page={'services'}/>
+
+    <div className="py-16 flex flex-col gap-10">
+      <div className="flex flex-col md:flex-row gap-6 w-full">
         {services.map(s => (
           <motion.div key={s.title} whileHover={{y:-6}} className="card p-6 flex-1 hover:shadow-lg transition">
             <div className="text-logoBlueStart text-3xl mb-3">{s.icon}</div>
@@ -30,6 +34,7 @@ export default function Services(){
           <li>Business Continuity support for faster recovery.</li>
         </ul>
       </section>
+    </div>
     </div>
   )
 }
