@@ -50,7 +50,7 @@ export default function Navbar(){
                 dropdownOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
               }`}
             >
-              <Link to="/products/corporate-insurance-covers" className="block px-4 py-2 no-underline text-black hover:bg-gray-400">Personal Insurance Covers</Link>
+              <Link to="/products/personal-insurance-covers" className="block px-4 py-2 no-underline text-black hover:bg-gray-400">Personal Insurance Covers</Link>
               <Link to="/products#corporate" className="block px-4 py-2 hover:bg-gray-400 no-underline text-black">Corporate Insurance Covers</Link>
             </div>
           </div>
@@ -95,7 +95,7 @@ function MobileMenu(){
           </button>
           {subOpen && (
             <div className="ml-3 flex flex-col">
-              <Link to="/products#personal" onClick={() => setOpen(false)} className="py-1 text-sm">Personal Insurance Covers</Link>
+              <Link to="/products/personal-insurance-covers" onClick={() => setOpen(false)} className="py-1 text-sm">Personal Insurance Covers</Link>
               <Link to="/products#corporate" onClick={() => setOpen(false)} className="py-1 text-sm">Corporate Insurance Covers</Link>
             </div>
           )}

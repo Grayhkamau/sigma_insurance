@@ -17,7 +17,7 @@ export default function Home(){
       {/* Services Highlights */}
     
       <section className="py-16 bg-lightGray flex ">
-        <div className="flex flex-col md:flex-row gap-6 justify-between w-full ">
+        <div className="flex flex-col md:flex-row gap-10 md:gap-6 justify-between w-full ">
           <SmallCard icon={<FaShieldAlt />} title="Personal Insurance" desc="Health, motor, home and other covers with flexible options." bg_img={health}/>
           <SmallCard icon={<FaUserTie />} title="Corporate Solutions" desc="Group health, life, liability and engineering covers for businesses."  bg_img={cooporate}/>
           <SmallCard icon={<FaHeartbeat />} title="Claims Support" desc="Guidance and fast processing to help you during difficult times." bg_img={claims}/>
@@ -29,10 +29,10 @@ export default function Home(){
       <TrustBadges />
 
       {/* Why Sigma Section */}
-      <section className="py-8 bg-cream shadow-2xl/30 mx-4">
-        <h2 className="text-4xl font-bold text-logoNavy text-center">Why Sigma Insurance</h2>
+      <section className="py-8 bg-cream shadow-2xl/30  md:mx-4">
+        <h2 className="md:text-4xl font-bold text-logoNavy text-center">Why Sigma Insurance</h2>
 
-        <div className='flex md:flex-row w-full h-fit justify-center gap-8'>
+        <div className='flex md:flex-row flex-col md:w-full h-fit md:justify-center gap-8'>
 
 
           <motion.div initial={{opacity:0, x:-30}} whileInView={{opacity:1, x:0}} transition={{duration:1.2}} className="flex flex-col md:flex-col gap-6 justify-center">
@@ -41,7 +41,7 @@ export default function Home(){
                 <Feature title="Secure & Reliable" desc="Focus on fast claims and continuous support." />
           </motion.div>
 
-              <div className="w-1/2 h-full">
+              <div className="md:w-1/2 h-full">
                    <img src={aboutSigma}  className='w-full h-full'/>
               </div>
         </div>
