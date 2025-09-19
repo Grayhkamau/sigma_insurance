@@ -5,16 +5,17 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
-import Products from './pages/Products'
 import Downloads from './pages/Downloads'
 import Contact from './pages/Contact'
 import { AnimatePresence, motion } from 'framer-motion'
 import Preloader from './components/Preloader'
 import Personal_insurance from './pages/Personal_Insurance'
+import Corporate_insurance from './pages/Corporate_insurance'
+import NotFound from './pages/not_found'
 
 export default function App(){
   const location = useLocation()
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1800)
@@ -35,16 +36,17 @@ export default function App(){
           className="flex flex-col min-h-screen bg-lightGray text-gray-800"
         >
           <Navbar />
-          <main className="pt-17">
+          <main>
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<PageWrapper><Home/></PageWrapper>} />
                 <Route path="/about" element={<PageWrapper><About/></PageWrapper>} />
                 <Route path="/services" element={<PageWrapper><Services/></PageWrapper>} />
-                <Route path="/products" element={<PageWrapper><Products/></PageWrapper>} />
-                <Route path='/products/personal-insurance-covers' element={<Personal_insurance/>}/>
+                <Route path='/products/personal-insurance-covers' element={<PageWrapper><Personal_insurance/></PageWrapper>}/>
+                <Route path='/products/corporate-insurance-covers' element={<PageWrapper><Corporate_insurance/></PageWrapper>}/>
                 <Route path="/downloads" element={<PageWrapper><Downloads/></PageWrapper>} />
                 <Route path="/contact" element={<PageWrapper><Contact/></PageWrapper>} />
+                <Route path="*" element={<NotFound/>}/>
               </Routes>
             </AnimatePresence>
           </main>

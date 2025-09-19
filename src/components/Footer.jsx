@@ -14,7 +14,7 @@ export default function Footer(){
         
         <div className="flex-1">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="Sigma Insurance" className="w-12 h-12 object-contain rounded-md" />
+            <img loading='lazy' src={logo} alt="Sigma Insurance" className="w-12 h-12 object-contain rounded-md" />
             <div>
               <div className="font-bold text-lg">Sigma Insurance</div>
               <div className="text-xs">Securing Today. Empowering Tomorrow.</div>
@@ -35,9 +35,9 @@ export default function Footer(){
           </ul>
         </div>
 
-        <div className="flex-1">
+        <div className="flex-1 ">
           <h4 className="font-semibold mb-3">Contact</h4>
-          <p className="text-sm">P.O Box 52521 – 00100 Nairobi</p>
+          <p className="text-sm ">P.O Box 52521 – 00100 Nairobi</p>
           <p className="text-sm">Westlands, Nairobi (physical location tbc)</p>
           <p className="text-sm mt-2">
             Email: <a href="mailto:info@sigmainsurance.co.ke" className="underline">info@sigmainsurance.co.ke</a>

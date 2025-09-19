@@ -21,7 +21,7 @@ const InsuranceProduct = ({style,initial,title,desc,img})=>{
                     </motion.div>
 
                     <div className="md:w-1/2">
-                        <img src={img}  className='w-full h-full'/>
+                        <img loading='lazy' src={img}  className='w-full h-full'/>
                     </div>
             </div>
 

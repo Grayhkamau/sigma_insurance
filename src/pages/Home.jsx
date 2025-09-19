@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
 import TrustBadges from '../shared/TrustBadges'
 import { FaShieldAlt, FaHeartbeat, FaUserTie } from 'react-icons/fa'
-import health from '../assets/health-min.jpg';
-import cooporate from '../assets/coorporate-min.jpg'
+import personal_hero from '../assets/personal_cover/hero.jpg';
+import coporate_hero from '../assets/corporate_cover/hero.jpg'
 import claims from '../assets/claims-min.jpg'
 import HeroSection from '../components/Herosection';
 import heroImg from '../assets/insure_hero-min.jpg' 
-import aboutSigma from '../assets/about_sigma.png';
+import aboutSigma from '../assets/why_sigma.png';
 
 export default function Home(){
   return (
@@ -16,10 +16,10 @@ export default function Home(){
 
       {/* Services Highlights */}
     
-      <section className="py-16 bg-lightGray flex ">
+      <section className="mt-28 mb-20">
         <div className="flex flex-col md:flex-row gap-10 md:gap-6 justify-between w-full ">
-          <SmallCard icon={<FaShieldAlt />} title="Personal Insurance" desc="Health, motor, home and other covers with flexible options." bg_img={health}/>
-          <SmallCard icon={<FaUserTie />} title="Corporate Solutions" desc="Group health, life, liability and engineering covers for businesses."  bg_img={cooporate}/>
+          <SmallCard icon={<FaShieldAlt />} title="Personal Insurance" desc="Health, motor, home and other covers with flexible options." bg_img={personal_hero}/>
+          <SmallCard icon={<FaUserTie />} title="Corporate Solutions" desc="Group health, life, liability and engineering covers for businesses."  bg_img={coporate_hero}/>
           <SmallCard icon={<FaHeartbeat />} title="Claims Support" desc="Guidance and fast processing to help you during difficult times." bg_img={claims}/>
         </div>
       </section>
@@ -42,7 +42,7 @@ export default function Home(){
           </motion.div>
 
               <div className="md:w-1/2 h-full">
-                   <img src={aboutSigma}  className='w-full h-full'/>
+                   <img loading='lazy' src={aboutSigma}  className='w-full h-full'/>
               </div>
         </div>
 
@@ -51,12 +51,28 @@ export default function Home(){
   )
 }
 
-function SmallCard({icon, title, desc, bg_img}){
+function SmallCard({ icon, title, desc, bg_img }) {
   return (
-    <div className=" p-6 flex-1 hover:shadow-xl transition bg-cover bg-center text-orange-800" style={{backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.35), rgba(0, 0, 0)), url(${bg_img})`,   borderRadius: '12px'}}>
-      <div className="text-white text-3xl mb-3">{icon}</div>
-      <h4 className="font-semibold" style={{color:'#0052A5'}}>{title}</h4>
-      <p className="mt-2" style={{color:'#FFD500'}}>{desc}</p>
+    <div 
+      className="relative p-6 flex-1 hover:shadow-xl transition rounded-xl overflow-hidden"
+    >
+      {/* Background image */}
+      <img 
+      loading='lazy'
+        src={bg_img} 
+        alt={title} 
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/35 to-black"></div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        <div className="text-white text-3xl mb-3">{icon}</div>
+        <h4 className="font-semibold text-logoBlueStart" style={{color:'#0052A5'}}>{title}</h4>
+        <p className="mt-2" style={{ color: '#FFD500' }}>{desc}</p>
+      </div>
     </div>
   )
 }
