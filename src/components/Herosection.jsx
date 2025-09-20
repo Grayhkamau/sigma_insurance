@@ -19,7 +19,7 @@ const HeroSection = ({heroImg, title, text, page}) => {
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight bg-[#00000080] w-fit p-4">
             {title}
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-gray-100/90">
+          <p className="mt-4 text-lg md:text-xl text-gray-100/90 italic">
             {text}
           </p>
 
