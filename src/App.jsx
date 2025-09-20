@@ -11,7 +11,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Preloader from './components/Preloader'
 import Personal_insurance from './pages/Personal_Insurance'
 import Corporate_insurance from './pages/Corporate_insurance'
-import NotFound from './pages/not_found'
+import NotFound from './pages/Not_found'
 
 export default function App(){
   const location = useLocation()
