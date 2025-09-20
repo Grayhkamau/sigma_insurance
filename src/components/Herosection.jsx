@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 
 const HeroSection = ({heroImg, title, text, page}) => {
   return (
@@ -16,12 +15,7 @@ const HeroSection = ({heroImg, title, text, page}) => {
 
       {/* Content */}
       <div className="container relative z-10 h-full flex items-center">
-        <motion.div 
-          initial={{ y: 20 }} 
-          animate={{ y: 0 }} 
-          transition={{ duration: 0.5 }} 
-          className="max-w-3xl text-white"
-        >
+        <div className="max-w-3xl text-white">
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight bg-[#00000080] w-fit p-4">
             {title}
           </h1>
@@ -46,7 +40,7 @@ const HeroSection = ({heroImg, title, text, page}) => {
               </Link>
             </div>
           ) : null}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
