@@ -36,7 +36,7 @@ const HeroSection = ({heroImg, title, text, page}) => {
                 to="/contact" 
                 className="px-6 py-3 rounded-lg border border-white/40 text-white hover:bg-white hover:text-logoNavy transition"
               >
-                Get a Quote
+                Contact US
               </Link>
             </div>
           ) : null}
