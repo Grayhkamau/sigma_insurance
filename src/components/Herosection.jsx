@@ -22,7 +22,7 @@ const HeroSection = ({heroImg, title, text, page}) => {
           transition={{ duration: 0.5 }} 
           className="max-w-3xl text-white"
         >
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight bg-[#00000080] w-fit p-4">
             {title}
           </h1>
           <p className="mt-4 text-lg md:text-xl text-gray-100/90">

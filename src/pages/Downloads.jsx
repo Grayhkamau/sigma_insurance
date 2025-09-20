@@ -1,8 +1,29 @@
-import React from "react"
 import { motion } from "framer-motion"
+import { useState } from "react"
 import { FaFileAlt, FaFileSignature, FaRegFilePdf } from "react-icons/fa"
-
+import sendEmail from "../utils/email"
 export default function Downloads() {
+  let [client_email,setClient_Email] = useState('')
+  let [docRequested,setdocRequested] = useState('Claim Form')
+  let [client_name,setClient_Name] = useState('')
+
+  const handleSubmit = (e) => {
+    
+    e.preventDefault()
+  
+    sendEmail({client_email,message:`Kindly send me this document: ${docRequested}`,client_name,subject:'Document Request'})
+      .then(
+        () => {
+            setClient_Email('')
+            setdocRequested('Claim Form')
+            setClient_Name('')
+            
+        }
+      );
+  }
+
+
+
   return (
     <div>
       {/* Header Section */}
@@ -58,11 +79,25 @@ export default function Downloads() {
             <h3 className="text-xl font-semibold text-logoNavy mb-6">
               Request a Document
             </h3>
-            <form className="flex flex-col gap-5">
+            <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+              <label className="flex flex-col text-left">
+                <span className="text-sm font-medium">Your Name</span>
+                <input
+                  type="text"
+                  maxLength={30}
+                  onChange={(e)=>setClient_Name(e.target.value)}
+                  value={client_name}
+                  required
+                  className="mt-2 p-3 border rounded-md focus:ring-2 focus:ring-logoBlueStart outline-none"
+                />
+              </label>
               <label className="flex flex-col text-left">
                 <span className="text-sm font-medium">Your Email</span>
                 <input
                   type="email"
+                  maxLength={20}
+                  onChange={(e)=>setClient_Email(e.target.value)}
+                  value={client_email}
                   required
                   className="mt-2 p-3 border rounded-md focus:ring-2 focus:ring-logoBlueStart outline-none"
                   placeholder="you@example.com"
@@ -71,17 +106,20 @@ export default function Downloads() {
 
               <label className="flex flex-col text-left">
                 <span className="text-sm font-medium">Document</span>
-                <select className="mt-2 p-3 border rounded-md focus:ring-2 focus:ring-logoBlueStart outline-none">
-                  <option>Claim Form</option>
-                  <option>Application Form</option>
-                  <option>Customer Service Charter</option>
+                <select className="mt-2 p-3 border rounded-md focus:ring-2 focus:ring-logoBlueStart outline-none"
+                  onChange={(e)=>setdocRequested(e.target.value)}
+                  value={docRequested}
+                >
+                  <option value={'Claim Form'}>Claim Form</option>
+                  <option value={'Application Form'}>Application Form</option>
+                  <option value={'Customer Service Charter'}>Customer Service Charter</option>
                 </select>
               </label>
 
               <div className="flex gap-3">
                 <button
                   type="submit"
-                  className="px-6 py-3 rounded-lg text-white font-semibold shadow-lg"
+                  className="px-6 py-3 rounded-lg text-white font-semibold shadow-lg cursor-pointer"
                   style={{
                     background: "linear-gradient(90deg,#0052A5,#00AEEF)",
                   }}
@@ -90,7 +128,7 @@ export default function Downloads() {
                 </button>
                 <button
                   type="reset"
-                  className="px-6 py-3 border rounded-lg hover:bg-gray-100 transition"
+                  className="px-6 py-3 border rounded-lg hover:bg-gray-100 transition cursor-pointer"
                 >
                   Reset
                 </button>

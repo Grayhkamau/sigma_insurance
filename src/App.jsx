@@ -12,7 +12,7 @@ import Preloader from './components/Preloader'
 import Personal_insurance from './pages/Personal_Insurance'
 import Corporate_insurance from './pages/Corporate_insurance'
 import NotFound from './pages/Not_found'
-
+import { ToastContainer } from 'react-toastify'
 export default function App(){
   const location = useLocation()
   const [loading, setLoading] = useState(false)
@@ -53,7 +53,9 @@ export default function App(){
           <Footer />
         </motion.div>
       )}
+      <ToastContainer/>
     </AnimatePresence>
+  
   )
 }
 

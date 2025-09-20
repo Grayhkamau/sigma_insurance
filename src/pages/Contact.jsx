@@ -1,97 +1,40 @@
-import React from "react"
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"
 
-// import { useRef, useState } from 'react';
-// import emailjs from '@emailjs/browser';
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
+import sendEmail from "../utils/email";
 
 
-// const Contact = ()=>{
-//     const form = useRef();
- 
-//     const success = () => toast("Email Sent!",{ 
-//         position: "top-right",
-//         autoClose: 5000,
-//         hideProgressBar: false,
-//         closeOnClick: true,
-//         pauseOnHover: true,
-//         draggable: true,
-//         progress: undefined,
-//         theme: "light"});
-//     const failed = () => toast.error("Email not sent, please try again later!", 
-//         {position: "top-right",
-//         autoClose: 5000,
-//         hideProgressBar: false,
-//         closeOnClick: true,
-//         pauseOnHover: true,
-//         draggable: true,
-//         progress: undefined,
-//         theme: "light"});
-//     const emptyFields = () => toast.warn("Kinldy fill out all the fields!",{
-//         position: "top-right",
-//         autoClose: 2000,
-//         hideProgressBar: false,
-//         closeOnClick: true,
-//         pauseOnHover: true,
-//         draggable: true,
-//         progress: undefined,
-//         theme: "light"
-//         });
-
-    
-//     const [formData, setFormData] = useState({
-//         from_name:'',
-//         subject:'',
-//         user_email:'',
-//         message:''
-//     })
-//     const onFormDataChange = (e)=>{
-//         // console.log(e.target.name,e.target.value)
-//         e.preventDefault();
-//         setFormData(formData=>{
-//             return {...formData,[e.target.name]:e.target.value}
-//         });
-//     }
-//   const sendEmail = (e) => {
-//     e.preventDefault();
-//     if(!formData.user_email||!formData.from_name||!formData.subject||!formData.message) {
-//         emptyFields()
-//         return;
-//     }
-
-//     emailjs
-//       .sendForm('service_emyhrhk', 'template_3x9mcbg', form.current, {
-//         publicKey: '76N0AtO7SFkve4KEv',
-//       })
-//       .then(
-//         () => {
-//             setFormData({
-//                 from_name:'',
-//                 subject:'',
-//                 user_email:'',
-//                 message:''
-//             })
-//             success()
-//         },
-//         (error) => {
-//             failed()
-//         },
-//       );
-//   };
 
 export default function Contact() {
 
-  
+  const [formData, setFormData] = useState({
+        client_name:'',
+        client_email:'',
+        subject:'',
+        message:''
+    })
+    const onFormDataChange = (e)=>{
+        e.preventDefault();
+        setFormData(formData=>{
+            return {...formData,[e.target.name]:e.target.value}
+        });
+    }
   const handleSubmit = (e) => {
     e.preventDefault()
-    const data = new FormData(e.target)
-    const name = data.get("name")
-    const email = data.get("email")
-    const message = data.get("message")
-    const subject = encodeURIComponent("Website Contact from " + name)
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)
-    window.location.href = `mailto:info@sigmainsurance.co.ke?subject=${subject}&body=${body}`
+
+    sendEmail(formData)
+      .then(
+        () => {
+
+            setFormData({
+                client_name:'',
+                client_email:'',
+                subject:'',
+                message:''
+            })
+            
+        }
+      );
   }
 
   return (
@@ -114,10 +57,13 @@ export default function Contact() {
             <h3 className="text-xl font-semibold text-logoNavy mb-6">Send us a Message</h3>
             <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
               <label className="flex flex-col text-left">
-                <span className="text-sm font-medium">Name</span>
+                <span className="text-sm font-medium">Full Name</span>
                 <input
-                  name="name"
+                  name="client_name"
                   required
+                  value={formData.client_name}
+                  minLength={5}
+                  onChange={onFormDataChange}
                   className="mt-2 p-3 border rounded-md focus:ring-2 focus:ring-logoBlueStart outline-none"
                 />
               </label>
@@ -125,8 +71,24 @@ export default function Contact() {
               <label className="flex flex-col text-left">
                 <span className="text-sm font-medium">Email</span>
                 <input
-                  name="email"
+                  name="client_email"
                   type="email"
+                  value={formData.client_email}
+                  minLength={5}
+                  onChange={onFormDataChange}
+                  required
+                  className="mt-2 p-3 border rounded-md focus:ring-2 focus:ring-logoBlueStart outline-none"
+                />
+              </label>
+
+            <label className="flex flex-col text-left">
+                <span className="text-sm font-medium">Subject</span>
+                <input
+                  maxLength={30}
+                  name="subject"
+                  type="text"
+                  value={formData.subject}
+                  onChange={onFormDataChange}
                   required
                   className="mt-2 p-3 border rounded-md focus:ring-2 focus:ring-logoBlueStart outline-none"
                 />
@@ -136,7 +98,9 @@ export default function Contact() {
                 <span className="text-sm font-medium">Message</span>
                 <textarea
                   name="message"
+                  onChange={onFormDataChange}
                   rows="5"
+                  value={formData.message}
                   required
                   className="mt-2 p-3 border rounded-md focus:ring-2 focus:ring-logoBlueStart outline-none"
                 />
@@ -144,7 +108,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="px-6 py-3 rounded-lg text-white font-semibold shadow-lg w-fit"
+                className="px-6 py-3 rounded-lg text-white font-semibold shadow-lg w-fit cursor-pointer"
                 style={{
                   background: "linear-gradient(90deg,#FF7A00,#FFD500)",
                 }}
